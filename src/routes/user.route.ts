@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { signUpUserController } from '../controllers';
+import { listUsersController, signUpUserController } from '../controllers';
 
 import {
   checkUserExistsMiddleware,
@@ -16,6 +16,8 @@ export const userRoutes = (): Router => {
     checkUserExistsMiddleware,
     signUpUserController
   );
+
+  router.get('', listUsersController);
 
   return router;
 };
