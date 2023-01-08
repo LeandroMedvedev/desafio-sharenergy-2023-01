@@ -1,5 +1,9 @@
 import { Router } from 'express';
-import { listUsersController, signUpUserController } from '../controllers';
+import {
+  deleteUserController,
+  listUsersController,
+  signUpUserController,
+} from '../controllers';
 
 import {
   checkUserExistsMiddleware,
@@ -18,6 +22,8 @@ export const userRoutes = (): Router => {
   );
 
   router.get('', listUsersController);
+
+  router.delete('', deleteUserController);
 
   return router;
 };
