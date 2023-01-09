@@ -7,7 +7,6 @@ export const updateUserController = async (
   request: Request,
   response: Response
 ) => {
-    
   const { status, message } = await updateUserService(
     request.validated as Partial<IUser>,
     request.user

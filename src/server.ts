@@ -10,8 +10,9 @@ const dbPassword = process.env.DB_PASS;
 mongoose.set('strictQuery', true);
 mongoose
   .connect(
-    `mongodb+srv://${dbUser}:${dbPassword}@cluster0.qrv9jws.mongodb.net/${db}?retryWrites=true&w=majority`
+    `mongodb+srv://${dbUser}:${dbPassword}@cluster0.hbqgswx.mongodb.net/${db}?retryWrites=true&w=majority`
   )
+
   .then(() => {
     console.log('Connected database!');
     const PORT = process.env.PORT || 3333;
@@ -20,4 +21,6 @@ mongoose
       console.log(`App running!\nhttp://localhost:${PORT}`)
     );
   })
-  .catch((error) => console.log(error));
+  .catch((error) =>
+    console.log(`Error connecting to MongoDB Atlas:\n${error}`)
+  );
