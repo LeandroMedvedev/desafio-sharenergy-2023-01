@@ -1,15 +1,16 @@
 import 'express-async-errors';
-import express, { NextFunction, Request, Response } from 'express';
+import cors from 'cors';
+import express from 'express';
 
 import { appRoutes } from './routes';
-import { errorHandler } from './errors';
+import { globalErrorHandlerMiddleware } from './middlewares';
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 appRoutes(app);
 
-app.use((error: Error, _: Request, response: Response, __: NextFunction) => {
-  return errorHandler(error, response);
-});
+app.use(globalErrorHandlerMiddleware);
 
 export default app;

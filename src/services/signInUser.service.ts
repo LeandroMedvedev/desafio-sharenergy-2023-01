@@ -29,5 +29,10 @@ export const signInUserService = async ({
     }
   );
 
-  return { status: 200, message: { token } };
+  const { name, email } = user;
+
+  return {
+    status: 200,
+    message: { token, user: { name, username: user.username, email } },
+  };
 };
